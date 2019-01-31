@@ -171,7 +171,7 @@ def fit_and_evaluate(model):
 
 ## 9. Testing models in search for the (*nearly*) perfect algorithm
 
-### a) LinearRegression
+#### - LinearRegression
 
 ```python
 lr = LinearRegression()
@@ -183,7 +183,7 @@ print('Linear Regression Performance on the test set: MAE = %0.4f' % lr_mae)
 Linear Regression Performance on the test set: MAE = 0.1911
 </div>
 
-### b) SVR
+#### - SVR
 
 ```python
 svm = SVR(C = 1000, gamma = 0.1)
@@ -196,7 +196,7 @@ print('Support Vector Machine Regression Performance on the test set: MAE = %0.4
 Support Vector Machine Regression Performance on the test set: MAE = 0.1675
 </div>
 
-### c) RandomForestRegressor
+#### - RandomForestRegressor
 
 ```python
 random_forest = RandomForestRegressor(random_state=60)
@@ -209,7 +209,7 @@ print('Random Forest Regression Performance on the test set: MAE = %0.4f' % rand
 Random Forest Regression Performance on the test set: MAE = 0.1204
 </div>
 
-### d) GradientBoostingRegressor
+#### - GradientBoostingRegressor
 
 ```python
 gradient_boosted = GradientBoostingRegressor(random_state=60)
@@ -222,7 +222,7 @@ print('Gradient Boosted Regression Performance on the test set: MAE = %0.4f' % g
 Gradient Boosted Regression Performance on the test set: MAE = 0.1425
 </div>
 
-### e) KNeighborsRegressor
+#### - KNeighborsRegressor
 
 ```python
 knn = KNeighborsRegressor(n_neighbors=10)
