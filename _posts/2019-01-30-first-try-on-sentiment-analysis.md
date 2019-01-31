@@ -20,6 +20,7 @@ The data is split evenly with 25k reviews intended for training and 25k for test
 IMDb lets us rate movies on a scale from 1 to 10. To label these reviews the curator of the data labeled anything with ≤ 4 stars as negative and anything with ≥ 7 stars as positive. Reviews with 5 or 6 stars were left out.
 
 First import the essentials:
+
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
@@ -30,6 +31,7 @@ import re
 ```
 
 Then, read the training and validation files:
+
 ```python
 reviews_train = []
 for line in open('C:/Users/SOUMYA/Downloads/movie_data.tar/movie_data/movie_data/full_train.txt', encoding="utf8"): 
@@ -39,11 +41,13 @@ for line in open('C:/Users/SOUMYA/Downloads/movie_data.tar/movie_data/movie_data
     reviews_test.append(line.strip())
 reviews_train[5]
 ```
+
 ```
 "This isn't the comedic Robin Williams, nor is it the quirky/insane Robin Williams of recent thriller fame. This is a hybrid of the classic drama without over-dramatization, mixed with Robin's new love of the thriller. But this isn't a thriller, per se. This is more a mystery/suspense vehicle through which Williams attempts to locate a sick boy and his keeper.<br /><br />Also starring Sandra Oh and Rory Culkin, this Suspense Drama plays pretty much like a news report, until William's character gets close to achieving his goal.<br /><br />I must say that I was highly entertained, though this movie fails to teach, guide, inspect, or amuse. It felt more like I was watching a guy (Williams), as he was actually performing the actions, from a third person perspective. In other words, it felt real, and I was able to subscribe to the premise of the story.<br /><br />All in all, it's worth a watch, though it's definitely not Friday/Saturday night fare.<br /><br />It rates a 7.7/10 from...<br /><br />the Fiend :."
 ```
 
 Ok. So we have successfully imported the required files. Now, as you can imagine, special characters (like ‘,’ ‘-‘ ‘,’ ‘/’ etc) and numbers are not essential for a sentiment analysis. Hence, we write a function to eliminate these characters using regular expression (**re**) :
+
 ```python
 REPLACE_NO_SPACE = re.compile("(\.)|(\;)|(\:)|(\!)|(\')|(\?)|(\,)|(\")|(\()|(\))|(\[)|(\])|(\d+)")
 REPLACE_WITH_SPACE = re.compile("(<br\s*/><br\s*/>)|(\-)|(\/)")
@@ -56,6 +60,7 @@ reviews_train_clean = preprocess_reviews(reviews_train)
 reviews_test_clean = preprocess_reviews(reviews_test)
 reviews_train_clean[5]
 ```
+
 ```
 'this isnt the comedic robin williams nor is it the quirky insane robin williams of recent thriller fame this is a hybrid of the classic drama without over dramatization mixed with robins new love of the thriller but this isnt a thriller per se this is more a mystery suspense vehicle through which williams attempts to locate a sick boy and his keeper also starring sandra oh and rory culkin this suspense drama plays pretty much like a news report until williams character gets close to achieving his goal i must say that i was highly entertained though this movie fails to teach guide inspect or amuse it felt more like i was watching a guy williams as he was actually performing the actions from a third person perspective in other words it felt real and i was able to subscribe to the premise of the story all in all its worth a watch though its definitely not friday saturday night fare it rates a   from the fiend '
 ```
@@ -78,6 +83,7 @@ X_test = cv.transform(reviews_test_clean)
 Now, we build the classifier. We can choose from numerous algorithms but I’m going to go with **Logistic Regression** as our baseline model because they’re easy to interpret, fast and its performance on sparse datasets like ours.
 Note: The targets/labels we use will be the same for training and testing because both datasets are structured the same, where the first 12.5k are positive and the last 12.5k are negative.
 Also I should point out that there are several hyper-parameters associated with all regression algorithms but I’m only going to concentrate on *c* (which adjusts regularization) to keep things simple.
+
 ```python
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
@@ -93,6 +99,7 @@ for c in [0.01, 0.05, 0.25, 0.5, 1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, lr.predict(X_val))))
 ```
+
 ```
 Accuracy for C=0.01: 0.87744
 Accuracy for C=0.05: 0.88256
@@ -126,12 +133,15 @@ def remove_stop_words(corpus):
 
 no_stop_words = remove_stop_words(reviews_train_clean)
 ```
+
 Before:
+
 ```
 "bromwell high is a cartoon comedy it ran at the same time as some other programs about school life such as teachers my years in the teaching profession lead me to believe that bromwell high’s satire is much closer to reality than is teachers the scramble to survive financially the insightful students who can see right through their pathetic teachers’ pomp the pettiness of the whole situation all remind me of the schools i knew and their students when i saw the episode in which a student repeatedly tried to burn down the school i immediately recalled at high a classic line inspector i’m here to sack one of your teachers student welcome to bromwell high i expect that many adults of my age think that bromwell high is far fetched what a pity that it isn’t"
 ```
 
 After:
+
 ```
 "bromwell high cartoon comedy ran time programs school life teachers years teaching profession lead believe bromwell high's satire much closer reality teachers scramble survive financially insightful students see right pathetic teachers' pomp pettiness whole situation remind schools knew students saw episode student repeatedly tried burn school immediately recalled high classic line inspector i'm sack one teachers student welcome bromwell high expect many adults age think bromwell high far fetched pity"
 ```
@@ -141,6 +151,7 @@ Next up is text Normalization in which we try to convert all of the different fo
 The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form.
 However, the two words differ in their flavor. Stemming usually refers to a crude heuristic process that chops off the ends of words in the hope of achieving this goal correctly most of the time, and often includes the removal of derivational affixes. Lemmatization usually refers to doing things properly with the use of a vocabulary and morphological analysis of words, normally aiming to remove inflectional endings only and to return the base or dictionary form of a word, which is known as the lemma .
 For our tutorial here, I’m going with Lemmatization.
+
 ```python
 def get_lemmatized_text(corpus):
     from nltk.stem import WordNetLemmatizer
@@ -151,6 +162,7 @@ lemmatized_reviews_test = get_lemmatized_text(reviews_test_clean)
 
 print('before lemmatization\n------------------------\n',reviews_train_clean[5],'\n\nafter lemmatization\n------------------------\n',lemmatized_reviews_train[5])
 ```
+
 ```
 before lemmatization
 ------------------------
@@ -163,6 +175,7 @@ after lemmatization
  
 ## n-grams
 Consider n-grams. Up until now, we used only single word features in our model, which we call 1-grams or unigrams. We can potentially add more predictive power to our model by adding two or three word sequences (bigrams or trigrams) as well. For example, if a review had the three word sequence “didn’t love movie” we would only consider these words individually with a unigram-only model and probably not capture that this is actually a *negative* sentiment because the word ‘love’ by itself is going to be highly correlated with a positive review.
+
 ```python
 cv = CountVectorizer(binary=True, ngram_range=(1, 2))
 cv.fit(lemmatized_reviews_train)
@@ -179,6 +192,7 @@ for c in [0.01, 0.05,0.06,0.07,0.08, 0.25, 0.5, 1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, lr.predict(X_val))))
 ```
+
 ```
 Accuracy for C=0.01: 0.88384
 Accuracy for C=0.05: 0.89184
@@ -195,6 +209,7 @@ Accuracy for C=1: 0.89376
 ## Algorithms
 As I said earlier, there are a variety of algorithms to choose from. So far we’ve chosen to represent each review as a very sparse vector (lots of zeros!) with a slot for every unique n-gram in the corpus (minus n-grams that appear too often or not often enough). *Linear classifiers* typically perform better than other algorithms on data that is represented in this way. So far we’ve chosen to represent each review as a very sparse vector (lots of zeros!) with a slot for every unique n-gram in the corpus (minus n-grams that appear too often or not often enough). Linear classifiers typically perform better than other algorithms on data that is represented in this way.
 Another algorithm that can produce great results with a quick training time are *Support Vector Machines* with a linear kernel. Here is an example:
+
 ```python
 from sklearn.svm import LinearSVC
 ngram_vectorizer = CountVectorizer(binary=True, ngram_range=(1, 2))
@@ -213,6 +228,7 @@ for c in [0.01, 0.05, 0.25, 0.5, 1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, svm.predict(X_val))))
 ```
+
 ```
 Accuracy for C=0.01: 0.89136
 Accuracy for C=0.05: 0.89104
@@ -223,6 +239,7 @@ Accuracy for C=1: 0.88704
 
 ## Final Model
 Finally, let’s make our final model:
+
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
@@ -247,6 +264,7 @@ for c in [0.001, 0.005, 0.01, 0.05, 0.1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, svm.predict(X_val))))
 ```
+
 ```
 Accuracy for C=0.001: 0.8808
 Accuracy for C=0.005: 0.88528
@@ -261,6 +279,7 @@ final.fit(X, target)
 print ("Final Accuracy: %s" 
        % accuracy_score(target, final.predict(X_test)))
 ```
+
 ```
 Final Accuracy: 0.89944
 ```
@@ -269,6 +288,7 @@ Pretty close to 90!
 
 ## Visualization
 Visualizing the most defining words/phrases is a good way to check your model’s sanity. One way of doing this is by using *WordCloud*:
+
 ```python
 feature_to_coef = {
     word: coef for word, coef in zip(
@@ -294,9 +314,10 @@ plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis('off')
 plt.show()
 ```
+
 ![Viz of positive words](https://skay1899.github.io/Data-Science-Projects/images/sentiment-1.jpg)
 
-``` python
+```python
 negative_words=[]
 for best_negative in sorted(
     feature_to_coef.items(), 
@@ -311,6 +332,7 @@ plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis('off')
 plt.show()
 ```
+
 ![Viz of negative words](https://skay1899.github.io/Data-Science-Projects/images/sentiment-2.jpg)
 
 Clearly these results make sense.
