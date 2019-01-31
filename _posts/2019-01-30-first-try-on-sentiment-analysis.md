@@ -296,7 +296,7 @@ plt.show()
 ```
 ![Viz of positive words](https://skay1899.github.io/Data-Science-Projects/images/sentiment-1.jpg)
 
-```python
+``` python
 negative_words=[]
 for best_negative in sorted(
     feature_to_coef.items(), 
