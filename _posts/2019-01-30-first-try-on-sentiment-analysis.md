@@ -6,9 +6,9 @@ date: 2019-01-30
 
 The past fifteen years have seen extensive investments in business infrastructure, which have improved the ability to collect data throughout the enterprise. Virtually every aspect of business is now open to data collection and often even instrumented for data collection: operations, manufacturing, supply-chain management, customer behavior, marketing campaign performance, workflow procedures, and so on. This broad availability of data has led to increasing interest in methods for extracting useful information and knowledge from data—the realm of data science.
 This realm is huge. To understand the whole picture, we have to go through the individual building blocks; specific algorithms being used for specific tasks. Let’s consider the case of retail industry. Some of the use cases exploiting Data Science tools are:
--**Recommendation engines**: compute a similarity index in the customers’ preferences and offer the goods or services accordingly.
--**Fraud detection**: continuous monitoring of the activity and ensure the detection of the fraudulent activity.
--**Customer sentiment analysis**: analysts can perform the brand-customer sentiment analysis by data received from social networks and online services feedbacks.
+- **Recommendation engines**: compute a similarity index in the customers’ preferences and offer the goods or services accordingly.
+- **Fraud detection**: continuous monitoring of the activity and ensure the detection of the fraudulent activity.
+- **Customer sentiment analysis**: analysts can perform the brand-customer sentiment analysis by data received from social networks and online services feedbacks.
 
 There are hundreds of other examples. Consider the fellows at Gradient, who showcased at CES 2019, a technology allows companies to offer an extra level of security in online processes.
 
