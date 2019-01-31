@@ -5,7 +5,7 @@ a:hover { text-decoration: underline; }
 
 li { text-decoration: none; color: #999; }
 
-code { text-decoration: none; color: rgb(255,255,255);font-style: italic; font-family: Courier, Monaco, monospace; }
+code { text-decoration: none; color: rgb(255,255,255);font-style: italic; font-family: 'Courier', 'Monaco', 'monospace'; }
 
 p, ul { font-size: 1.5em; line-height: 1.4em; color: #999; }
 
@@ -32,3 +32,10 @@ ul.posts li { list-style: none; color: rgb(255,255,255) }
 .cv address, .cv .download { font-family: 'Helvetica', 'Arial', 'Sans-Serif'; }
 .cv address, .cv p { font-size: 1.2em; }
 .cv .download { float: right; font-size: .8em; text-transform: uppercase; }
+
+ .boxBorder {
+       border: 2px solid #990066;
+       padding: 10px;
+       outline: #990066 solid 5px;
+       outline-offset: 5px;
+     }
