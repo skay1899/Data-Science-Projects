@@ -1,9 +1,38 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    
+    <link rel="stylesheet" href="https://skay1899.github.io/Data-Science-Projects/css/main.css">
+  
+  </head>
+
+
+  <body background="https://skay1899.github.io/Data-Science-Projects/_posts/wlppr.jpg">
+    <nav>
+<ul>
+<li><a href="https://skay1899.github.io/Data-Science-Projects/">Home</a></li>
+<li><a href="https://skay1899.github.io/Data-Science-Projects/about/">About</a></li>
+<li><a href="https://skay1899.github.io/Data-Science-Projects/cv/">CV</a></li>
+<li><a href="https://skay1899.github.io/Data-Science-Projects/projects">Projects</a></li>
+</ul>
+    </nav>
+<div class="container">
 <h1>{{ page.title }}</h1>
 <p class="meta">{{ page.date | date_to_string }}</p>
 
 <div class="post">
   {{ content }}
 </div>
+  
+  <footer>
+   <ul>
+   <li><a href="mailto:soumya.skd@gmail.com">email</a></li>
+   <li><a href="https://github.com/skay1899">github repository</a></li>
+   <li><a href="https://linkedin.com/in/soumyaskd">linkedIn</a></li>
+   <li><a href="https://hackerrank.com/soumya_skd1">hackerrank</a></li>
+   </ul>
+  </footer>
+  </body>
+
+</html>
