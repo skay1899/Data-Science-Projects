@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Comparing some regression algorithms on the wine dataset"
-date: 2019-01-30
+date: 2018-11-12
 ---
 
 Well, we all know every algorithm has it's own merits and shortcomings. So, comparing them head-on is not a logical thing to do. It depends on the type of data, type of analysis we are performing and the dataset itself. In this post, I'm going to use the famous/infamous wine dataset to perform *supervised machine learning* and compare these algorithm:
