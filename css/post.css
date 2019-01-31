@@ -37,7 +37,7 @@ ul.posts li { list-style: none; color: rgb(255,255,255) }
  .boxBorder {
        border: 1px solid #ffffff;
        padding: 5px;
-	   font-size: 1em;
+	   font-size: 0.813em;
 	   color: rgb(255,255,255);
 	   font-style: italic;
 	   font-family: 'Courier', 'Monaco', 'monospace';
