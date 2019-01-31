@@ -18,8 +18,8 @@ nav ul li, footer ul li { display: inline; margin-right: 20px; }
 footer { border-top: 1px solid #d5d5d5; font-size: .8em; }
 
 /* Blog */
-ul.posts { margin: 20px auto 40px; font-size: 1.5em; color: #999 }
-ul.posts li { list-style: none; color: #999 }
+ul.posts { margin: 20px auto 40px; font-size: 1.5em; color: rgb(255,255,255) }
+ul.posts li { list-style: none; color: rgb(255,255,255) }
 
 /* CV */
 .cv { margin: 0px 0px 60px; }
