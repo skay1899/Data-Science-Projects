@@ -3,6 +3,8 @@ body { margin: 60px auto; width: 70%; background-image: url("https://skay1899.gi
 a { text-decoration: none; color: rgb(255,255,255); }
 a:hover { text-decoration: underline; }
 
+li { text-decoration: none; color: rgb(255,255,255); }
+
 p, ul { font-size: 1.5em; line-height: 1.4em; color: #999; }
 
 h1, h2, h3, h4 { font-family: 'Helvetica', 'Arial', 'Sans-Serif'; color:rgb(255, 0, 0) }
