@@ -110,6 +110,7 @@ This can be done by a couple of ways:
 1. using stop words from nltk and making an udf to remove words
 2. using manual stop words and making an udf to remove words (we will see this in our final model)
 3. using countVectorizer
+
 ```python
 from nltk.corpus import stopwords
 
