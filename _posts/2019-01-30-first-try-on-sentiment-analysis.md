@@ -39,7 +39,9 @@ for line in open('C:/Users/SOUMYA/Downloads/movie_data.tar/movie_data/movie_data
     reviews_test.append(line.strip())
 reviews_train[5]
 ```
-|"This isn't the comedic Robin Williams, nor is it the quirky/insane Robin Williams of recent thriller fame. This is a hybrid of the classic drama without over-dramatization, mixed with Robin's new love of the thriller. But this isn't a thriller, per se. This is more a mystery/suspense vehicle through which Williams attempts to locate a sick boy and his keeper.<br /><br />Also starring Sandra Oh and Rory Culkin, this Suspense Drama plays pretty much like a news report, until William's character gets close to achieving his goal.<br /><br />I must say that I was highly entertained, though this movie fails to teach, guide, inspect, or amuse. It felt more like I was watching a guy (Williams), as he was actually performing the actions, from a third person perspective. In other words, it felt real, and I was able to subscribe to the premise of the story.<br /><br />All in all, it's worth a watch, though it's definitely not Friday/Saturday night fare.<br /><br />It rates a 7.7/10 from...<br /><br />the Fiend :."|
+```
+"This isn't the comedic Robin Williams, nor is it the quirky/insane Robin Williams of recent thriller fame. This is a hybrid of the classic drama without over-dramatization, mixed with Robin's new love of the thriller. But this isn't a thriller, per se. This is more a mystery/suspense vehicle through which Williams attempts to locate a sick boy and his keeper.<br /><br />Also starring Sandra Oh and Rory Culkin, this Suspense Drama plays pretty much like a news report, until William's character gets close to achieving his goal.<br /><br />I must say that I was highly entertained, though this movie fails to teach, guide, inspect, or amuse. It felt more like I was watching a guy (Williams), as he was actually performing the actions, from a third person perspective. In other words, it felt real, and I was able to subscribe to the premise of the story.<br /><br />All in all, it's worth a watch, though it's definitely not Friday/Saturday night fare.<br /><br />It rates a 7.7/10 from...<br /><br />the Fiend :."
+```
 
 Ok. So we have successfully imported the required files. Now, as you can imagine, special characters (like ‘,’ ‘-‘ ‘,’ ‘/’ etc) and numbers are not essential for a sentiment analysis. Hence, we write a function to eliminate these characters using regular expression (**re**) :
 ```python
@@ -54,7 +56,9 @@ reviews_train_clean = preprocess_reviews(reviews_train)
 reviews_test_clean = preprocess_reviews(reviews_test)
 reviews_train_clean[5]
 ```
-|'this isnt the comedic robin williams nor is it the quirky insane robin williams of recent thriller fame this is a hybrid of the classic drama without over dramatization mixed with robins new love of the thriller but this isnt a thriller per se this is more a mystery suspense vehicle through which williams attempts to locate a sick boy and his keeper also starring sandra oh and rory culkin this suspense drama plays pretty much like a news report until williams character gets close to achieving his goal i must say that i was highly entertained though this movie fails to teach guide inspect or amuse it felt more like i was watching a guy williams as he was actually performing the actions from a third person perspective in other words it felt real and i was able to subscribe to the premise of the story all in all its worth a watch though its definitely not friday saturday night fare it rates a   from the fiend '|
+```
+'this isnt the comedic robin williams nor is it the quirky insane robin williams of recent thriller fame this is a hybrid of the classic drama without over dramatization mixed with robins new love of the thriller but this isnt a thriller per se this is more a mystery suspense vehicle through which williams attempts to locate a sick boy and his keeper also starring sandra oh and rory culkin this suspense drama plays pretty much like a news report until williams character gets close to achieving his goal i must say that i was highly entertained though this movie fails to teach guide inspect or amuse it felt more like i was watching a guy williams as he was actually performing the actions from a third person perspective in other words it felt real and i was able to subscribe to the premise of the story all in all its worth a watch though its definitely not friday saturday night fare it rates a   from the fiend '
+```
 
 *Food for thought: Why did we use two variables REPLACE_NO_SPACE and REPLACE_WITH_SPACE?*
 
@@ -89,11 +93,13 @@ for c in [0.01, 0.05, 0.25, 0.5, 1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, lr.predict(X_val))))
 ```
-|Accuracy for C=0.01: 0.87744
+```
+Accuracy for C=0.01: 0.87744
 Accuracy for C=0.05: 0.88256
 Accuracy for C=0.25: 0.88144
 Accuracy for C=0.5: 0.87984
-Accuracy for C=1: 0.87792|
+Accuracy for C=1: 0.87792
+```
 
 We get highest accuracy with *c=0.05*. If we were to stop here, we would select our final model with *c=0.05*.
 
@@ -120,10 +126,14 @@ def remove_stop_words(corpus):
 no_stop_words = remove_stop_words(reviews_train_clean)
 ```
 Before:
-|"bromwell high is a cartoon comedy it ran at the same time as some other programs about school life such as teachers my years in the teaching profession lead me to believe that bromwell high’s satire is much closer to reality than is teachers the scramble to survive financially the insightful students who can see right through their pathetic teachers’ pomp the pettiness of the whole situation all remind me of the schools i knew and their students when i saw the episode in which a student repeatedly tried to burn down the school i immediately recalled at high a classic line inspector i’m here to sack one of your teachers student welcome to bromwell high i expect that many adults of my age think that bromwell high is far fetched what a pity that it isn’t"|
+```
+"bromwell high is a cartoon comedy it ran at the same time as some other programs about school life such as teachers my years in the teaching profession lead me to believe that bromwell high’s satire is much closer to reality than is teachers the scramble to survive financially the insightful students who can see right through their pathetic teachers’ pomp the pettiness of the whole situation all remind me of the schools i knew and their students when i saw the episode in which a student repeatedly tried to burn down the school i immediately recalled at high a classic line inspector i’m here to sack one of your teachers student welcome to bromwell high i expect that many adults of my age think that bromwell high is far fetched what a pity that it isn’t"
+```
 
 After:
-|"bromwell high cartoon comedy ran time programs school life teachers years teaching profession lead believe bromwell high's satire much closer reality teachers scramble survive financially insightful students see right pathetic teachers' pomp pettiness whole situation remind schools knew students saw episode student repeatedly tried burn school immediately recalled high classic line inspector i'm sack one teachers student welcome bromwell high expect many adults age think bromwell high far fetched pity"|
+```
+"bromwell high cartoon comedy ran time programs school life teachers years teaching profession lead believe bromwell high's satire much closer reality teachers scramble survive financially insightful students see right pathetic teachers' pomp pettiness whole situation remind schools knew students saw episode student repeatedly tried burn school immediately recalled high classic line inspector i'm sack one teachers student welcome bromwell high expect many adults age think bromwell high far fetched pity"
+```
 
 ## Normalization
 Next up is text Normalization in which we try to convert all of the different forms of a given word into one. Most common 2 methods are *Stemming* and *Lemmatization*.
@@ -140,13 +150,15 @@ lemmatized_reviews_test = get_lemmatized_text(reviews_test_clean)
 
 print('before lemmatization\n------------------------\n',reviews_train_clean[5],'\n\nafter lemmatization\n------------------------\n',lemmatized_reviews_train[5])
 ```
-|before lemmatization
+```
+before lemmatization
 ------------------------
  this isnt the comedic robin williams nor is it the quirky insane robin williams of recent thriller fame this is a hybrid of the classic drama without over dramatization mixed with robins new love of the thriller but this isnt a thriller per se this is more a mystery suspense vehicle through which williams attempts to locate a sick boy and his keeper also starring sandra oh and rory culkin this suspense drama plays pretty much like a news report until williams character gets close to achieving his goal i must say that i was highly entertained though this movie fails to teach guide inspect or amuse it felt more like i was watching a guy williams as he was actually performing the actions from a third person perspective in other words it felt real and i was able to subscribe to the premise of the story all in all its worth a watch though its definitely not friday saturday night fare it rates a   from the fiend  
 
 after lemmatization
 ------------------------
- this isnt the comedic robin williams nor is it the quirky insane robin williams of recent thriller fame this is a hybrid of the classic drama without over dramatization mixed with robin new love of the thriller but this isnt a thriller per se this is more a mystery suspense vehicle through which williams attempt to locate a sick boy and his keeper also starring sandra oh and rory culkin this suspense drama play pretty much like a news report until williams character get close to achieving his goal i must say that i wa highly entertained though this movie fails to teach guide inspect or amuse it felt more like i wa watching a guy williams a he wa actually performing the action from a third person perspective in other word it felt real and i wa able to subscribe to the premise of the story all in all it worth a watch though it definitely not friday saturday night fare it rate a from the fiend|
+ this isnt the comedic robin williams nor is it the quirky insane robin williams of recent thriller fame this is a hybrid of the classic drama without over dramatization mixed with robin new love of the thriller but this isnt a thriller per se this is more a mystery suspense vehicle through which williams attempt to locate a sick boy and his keeper also starring sandra oh and rory culkin this suspense drama play pretty much like a news report until williams character get close to achieving his goal i must say that i wa highly entertained though this movie fails to teach guide inspect or amuse it felt more like i wa watching a guy williams a he wa actually performing the action from a third person perspective in other word it felt real and i wa able to subscribe to the premise of the story all in all it worth a watch though it definitely not friday saturday night fare it rate a from the fiend
+```
  
 ## n-grams
 Consider n-grams. Up until now, we used only single word features in our model, which we call 1-grams or unigrams. We can potentially add more predictive power to our model by adding two or three word sequences (bigrams or trigrams) as well. For example, if a review had the three word sequence “didn’t love movie” we would only consider these words individually with a unigram-only model and probably not capture that this is actually a *negative* sentiment because the word ‘love’ by itself is going to be highly correlated with a positive review.
@@ -166,14 +178,16 @@ for c in [0.01, 0.05,0.06,0.07,0.08, 0.25, 0.5, 1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, lr.predict(X_val))))
 ```
-|Accuracy for C=0.01: 0.88384
+```
+Accuracy for C=0.01: 0.88384
 Accuracy for C=0.05: 0.89184
 Accuracy for C=0.06: 0.89248
 Accuracy for C=0.07: 0.89296
 Accuracy for C=0.08: 0.8928
 Accuracy for C=0.25: 0.8944
 Accuracy for C=0.5: 0.89424
-Accuracy for C=1: 0.89376|
+Accuracy for C=1: 0.89376
+```
 
 **Note**: There’s technically no limit on the size that n can be for your model, but there are several things to consider. First, increasing the number of grams will not necessarily give you better performance. Second, the size of your matrix grows exponentially as you increment n, so if you have a large corpus that is comprised of large documents your model may take a very long time to train.
 
@@ -198,11 +212,13 @@ for c in [0.01, 0.05, 0.25, 0.5, 1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, svm.predict(X_val))))
 ```
-|Accuracy for C=0.01: 0.89136
+```
+Accuracy for C=0.01: 0.89136
 Accuracy for C=0.05: 0.89104
 Accuracy for C=0.25: 0.88816
 Accuracy for C=0.5: 0.8872
-Accuracy for C=1: 0.88704|
+Accuracy for C=1: 0.88704
+```
 
 ## Final Model
 Finally, let’s make our final model:
@@ -230,11 +246,13 @@ for c in [0.001, 0.005, 0.01, 0.05, 0.1]:
     print ("Accuracy for C=%s: %s" 
            % (c, accuracy_score(y_val, svm.predict(X_val))))
 ```
-|Accuracy for C=0.001: 0.8808
+```
+Accuracy for C=0.001: 0.8808
 Accuracy for C=0.005: 0.88528
 Accuracy for C=0.01: 0.88704
 Accuracy for C=0.05: 0.88592
-Accuracy for C=0.1: 0.88608|
+Accuracy for C=0.1: 0.88608
+```
 
 ```python
 final = LinearSVC(C=0.1)
@@ -242,7 +260,9 @@ final.fit(X, target)
 print ("Final Accuracy: %s" 
        % accuracy_score(target, final.predict(X_test)))
 ```
-|Final Accuracy: 0.89944|
+```
+Final Accuracy: 0.89944
+```
 
 Pretty close to 90!
 
