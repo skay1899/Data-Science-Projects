@@ -34,8 +34,6 @@ ul.posts li { list-style: none; color: rgb(255,255,255) }
 .cv .download { float: right; font-size: .8em; text-transform: uppercase; }
 
  .boxBorder {
-       border: 2px solid #990066;
-       padding: 10px;
-       outline: #990066 solid 5px;
-       outline-offset: 5px;
+       border: 1px solid #ffffff;
+       padding: 5px;
      }
