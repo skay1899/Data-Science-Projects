@@ -329,7 +329,7 @@ random_results = pd.DataFrame(random_cv.cv_results_).sort_values('mean_test_scor
 random_results.head(5)
 ```
 
-|mean_fit_time|std_fit_time|mean_score_time|std_score_time|param_weights|param_p|param_n_neighbors|param_leaf_size|param_algorithm|params|split0_test_score|split1_test_score|split2_test_score|split3_test_score|mean_test_score|std_test_score|rank_test_score|split0_train_score|split1_train_score|split2_train_score|split3_train_score|mean_train_score|std_train_score|
+||mean_fit_time|std_fit_time|mean_score_time|std_score_time|param_weights|param_p|param_n_neighbors|param_leaf_size|param_algorithm|params|split0_test_score|split1_test_score|split2_test_score|split3_test_score|mean_test_score|std_test_score|rank_test_score|split0_train_score|split1_train_score|split2_train_score|split3_train_score|mean_train_score|std_train_score|
 |1|0.00000|0.000000|0.05225|0.022487|uniform|1|2|10|brute|{'weights': 'uniform', 'p': 1, 'n_neighbors': ...|-0.032258|-0.032258|-0.048387|-0.032258|-0.036290|0.006984|1|-0.026882|-0.010753|-0.016129|-0.021505|-0.018817|0.006011|
 |15|0.00025|0.000433|0.00050|0.000500|distance|1|2|20|kd_tree|{'weights': 'distance', 'p': 1, 'n_neighbors':...|-0.032333|-0.034299|-0.046358|-0.033374|-0.036591|0.005682|2|-0.000000|-0.000000|-0.000000|-0.000000|0.000000|0.000000|
 |23|0.00025|0.000433|0.00050|0.000500|uniform|2|2|40|ball_tree|{'weights': 'uniform', 'p': 2, 'n_neighbors': ...|-0.064516|-0.048387|-0.048387|-0.048387|-0.052419|0.006984|3|-0.032258|-0.032258|-0.021505|-0.026882|-0.028226|0.004458|
@@ -385,7 +385,7 @@ results = pd.DataFrame(grid_search.cv_results_)
 results.head(5)
 ```
 
-|mean_fit_time|std_fit_time|mean_score_time|std_score_time|param_leaf_size|params|split0_test_score|split1_test_score|split2_test_score|split3_test_score|mean_test_score|std_test_score|rank_test_score|split0_train_score|split1_train_score|split2_train_score|split3_train_score|mean_train_score|std_train_score|
+||mean_fit_time|std_fit_time|mean_score_time|std_score_time|param_leaf_size|params|split0_test_score|split1_test_score|split2_test_score|split3_test_score|mean_test_score|std_test_score|rank_test_score|split0_train_score|split1_train_score|split2_train_score|split3_train_score|mean_train_score|std_train_score|
 |0|0.00050|0.000500|0.00025|0.000433|3|{'leaf_size': 3}|-0.032258|-0.032258|-0.048387|-0.032258|-0.03629|0.006984|1|-0.026882|-0.010753|-0.016129|-0.021505|-0.018817|0.006011|
 |1|0.00025|0.000433|0.00025|0.000433|5|{'leaf_size': 5}|-0.032258|-0.032258|-0.048387|-0.032258|-0.03629|0.006984|1|-0.026882|-0.010753|-0.016129|-0.021505|-0.018817|0.006011|
 |2|0.00025|0.000433|0.00050|0.000500|7|{'leaf_size': 7}|-0.032258|-0.032258|-0.048387|-0.032258|-0.03629|0.006984|1|-0.026882|-0.010753|-0.016129|-0.021505|-0.018817|0.006011|
